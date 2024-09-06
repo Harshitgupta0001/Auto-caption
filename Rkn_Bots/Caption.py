@@ -10,6 +10,12 @@ import asyncio, re, time, sys
 from .database import total_user, getid, delete, addCap, updateCap, insert, chnl_ids
 from pyrogram.errors import FloodWait
 from utils import react_msg 
+from pyrogram.types import *
+
+buttons = [[
+            InlineKeyboardButton('Main Channel', url='https://t.me/hgbotz'),
+            InlineKeyboardButton('Help Group', url='https://t.me/HGBOTZ_support')
+            ]]
 
 @Client.on_message(filters.private & filters.user(Rkn_Bots.ADMIN)  & filters.command(["stats"]))
 async def all_db_users_here(client, message):
@@ -70,10 +76,7 @@ async def start_cmd(bot, message):
     await message.reply_photo(photo=Rkn_Bots.RKN_PIC,
         caption=f"<b>Hᴇʟʟᴏ 😎 {message.from_user.mention} ✨</b>\n<b><blockquote>ɪ ᴀᴍ SIMPEL 😁 BUT ᴘᴏᴡᴇʀꜰᴜʟʟ AUTO CAPTION ʙᴏᴛ ᴊᴜꜱᴛ CLICK /help For understanding ☜ </blockquote><b>\n<b><spoiler>🔋Maintained by <a href='https://t.me/Harshit_contact_bot'>ℍ𝕒ℝ𝕤ℍ𝕚𝕋</a></spoiler><b>",
         has_spoiler=True, 
-        reply_markup=types.InlineKeyboardMarkup([[
-            types.InlineKeyboardButton('Main Channel', url='https://t.me/hgbotz'),
-            types.InlineKeyboardButton('Help Group', url='https://t.me/HGBOTZ_support')
-            ]]))
+        reply_markup=InlineKeyboardMarkup(buttons)) 
 
 @Client.on_message(filters.command("help") & filters.private)
 async def help_cmd(bot, message):
