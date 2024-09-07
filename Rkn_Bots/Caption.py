@@ -17,6 +17,11 @@ buttons = [[
             InlineKeyboardButton('Help Group', url='https://t.me/HGBOTZ_support')
             ]]
 
+query_button = [[
+                 InlineKeyboardButton('query ⚡', url='https://t.me/HGBOTZ_support')
+            ]]
+                 
+
 @Client.on_message(filters.private & filters.user(Rkn_Bots.ADMIN)  & filters.command(["stats"]))
 async def all_db_users_here(client, message):
     start_t = time.time()
@@ -77,6 +82,16 @@ async def start_cmd(bot, message):
         caption=f"<b>Hᴇʟʟᴏ 😎 {message.from_user.mention} ✨</b>\n<b><blockquote>ɪ ᴀᴍ SIMPEL 😁 BUT ᴘᴏᴡᴇʀꜰᴜʟʟ AUTO CAPTION ʙᴏᴛ ᴊᴜꜱᴛ CLICK /help For understanding ☜ </blockquote><b>\n<b><spoiler>🔋Maintained by <a href='https://t.me/Harshit_contact_bot'>ℍ𝕒ℝ𝕤ℍ𝕚𝕋</a></spoiler><b>",
         has_spoiler=True, 
         reply_markup=InlineKeyboardMarkup(buttons)) 
+
+@Client.on_message(filters.command("tutorial") & filters.private)
+async def start_cmd(bot, message):
+    await react_msg(bot, message)
+    user_id = int(message.from_user.id)
+    await insert(user_id)
+    await message.reply_video(video="https://t.me/tutorials_HGBOTZ/2",
+        caption="<b>HOW TO USE ME\nPowered By  <a href='https://t.me/hgbotz'>HGBOTZ</a><b>",
+        reply_markup=InlineKeyboardMarkup(query_button)) 
+
 
 @Client.on_message(filters.command("help") & filters.private)
 async def help_cmd(bot, message):
