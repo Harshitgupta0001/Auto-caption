@@ -123,7 +123,7 @@ async def delCaption_cmd(bot, message):
 async def setCaption(bot, message):
     if len(message.command) < 2:
         return await message.reply(
-            "Exam.: /set_caption <code> set your caption ( use {file_name} to show file name</code>)"
+            "Exam.: /set_caption <code> set your caption ( use {file_name} to show file name, {file_caption} to show file caption</code>)"
         )
     chnl_id = message.chat.id
     caption = (
@@ -165,21 +165,20 @@ async def auto_edit_caption(bot, message):
                     .replace("_", " ")
                     .replace(".", " ")
                 )
+
+                # Get the caption of the file (if exists)
+                file_caption = message.caption or "No caption"
+                
                 cap_dets = await chnl_ids.find_one({"chnl_id": chnl_id})
                 try:
                     if cap_dets:
                         cap = cap_dets["caption"]
-                        replaced_caption = cap.format(file_name=file_name)
+                        replaced_caption = cap.format(file_name=file_name, file_caption=file_caption)
                         await message.edit(replaced_caption)
                     else:
-                        replaced_caption = Rkn_Bots.DEF_CAP.format(file_name=file_name)
+                        replaced_caption = Rkn_Bots.DEF_CAP.format(file_name=file_name, file_caption=file_caption)
                         await message.edit(replaced_caption)
                 except FloodWait as e:
                     await asyncio.sleep(e.x)
                     continue
     return
-
-# Rkn Developer 
-# Don't Remove Credit 😔
-# Telegram Channel @RknDeveloper & @Rkn_Botz
-# Developer @RknDeveloperr
