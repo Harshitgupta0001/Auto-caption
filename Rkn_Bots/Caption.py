@@ -168,15 +168,17 @@ async def auto_edit_caption(bot, message):
 
                 # Get the caption of the file (if exists)
                 file_caption = message.caption or "No caption"
+
+                language = message.caption.detact("Hindi","English", "Korean")
                 
                 cap_dets = await chnl_ids.find_one({"chnl_id": chnl_id})
                 try:
                     if cap_dets:
                         cap = cap_dets["caption"]
-                        replaced_caption = cap.format(file_name=file_name, file_caption=file_caption)
+                        replaced_caption = cap.format(file_name=file_name, file_caption=file_caption, languages=languages)
                         await message.edit(replaced_caption)
                     else:
-                        replaced_caption = Rkn_Bots.DEF_CAP.format(file_name=file_name, file_caption=file_caption)
+                        replaced_caption = Rkn_Bots.DEF_CAP.format(file_name=file_name, file_caption=file_caption, languages=languages)
                         await message.edit(replaced_caption)
                 except FloodWait as e:
                     await asyncio.sleep(e.x)
