@@ -169,7 +169,7 @@ async def auto_edit_caption(bot, message):
                 # Get the caption of the file (if exists)
                 file_caption = message.caption or "No caption"
 
-                language = message.caption.detact("Hindi","English", "Korean")
+                language = message.caption.find("Hindi","English", "Korean")
                 
                 cap_dets = await chnl_ids.find_one({"chnl_id": chnl_id})
                 try:
