@@ -113,7 +113,7 @@ async def tutorial_cmd(bot, message):
     await react_msg(bot, message)
     user_id = int(message.from_user.id)
     await insert(user_id)
-    await message.reply_video(video="https://t.me/tutorials_HGBOTZ/2",
+    await message.reply_video(video="https://envs.sh/pwL.mp4",
         caption="<b>HOW TO USE ME\nPowered By  <a href='https://t.me/hgbotz'>HGBOTZ</a><b>",
         reply_markup=InlineKeyboardMarkup(query_button)) 
 
