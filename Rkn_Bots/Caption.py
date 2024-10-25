@@ -15,8 +15,6 @@ from pyrogram.types import *
 buttons = [[
             InlineKeyboardButton('Main Channel', url='https://t.me/hgbotz'),
             InlineKeyboardButton('Help Group', url='https://t.me/HGBOTZ_support')
-         ],[
-            InlineKeyboardButton('💳 ᴅᴏɴᴀᴛᴇ', callback_data='donate')
           ]]
 
 query_button = [[
@@ -209,18 +207,3 @@ async def auto_edit_caption(bot, message):
                     await asyncio.sleep(e.x)
                     continue
     return
-
-@Client.on_callback_query(filters.regex(r'^donate'))
-async def donate(bot, query):
-    await query.message.edit_text(
-        text='hii',
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('• ʙᴀᴄᴋ', callback_data='back')]]),
-        disable_web_page_preview=True,
-        parse_mode=enums.ParseMode.HTML,
-    )
-@Client.on_callback_query(filters.regex(r'^back'))
-async def back(bot, query):
-    reply_markup = InlineKeyboardMarkup(buttons)
-    await query.message.edit_text(
-       reply_markup=reply_markup,
-       text=f"<b>Hᴇʟʟᴏ 😎 {message.from_user.mention} ✨</b>\n<b><blockquote>ɪ ᴀᴍ SIMPEL 😁 BUT ᴘᴏᴡᴇʀꜰᴜʟʟ AUTO CAPTION ʙᴏᴛ ᴊᴜꜱᴛ CLICK /help For understanding ☜ </blockquote></b>\n<b>For video tutorial click /tutorial\n\n<spoiler>🔋Maintained by <a href='https://t.me/Harshit_contact_bot'>ℍ𝕒ℝ𝕤ℍ𝕚𝕋</a></spoiler></b>")
