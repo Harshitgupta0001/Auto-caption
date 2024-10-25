@@ -16,7 +16,9 @@ from Script import script
 buttons = [[
             InlineKeyboardButton('Main Channel', url='https://t.me/hgbotz'),
             InlineKeyboardButton('Help Group', url='https://t.me/HGBOTZ_support')
-            ]]
+         ],[
+            InlineKeyboardButton('⍟ Aʙᴏᴜᴛ ⍟', callback_data='about')
+          ]]
 
 query_button = [[
                  InlineKeyboardButton('query ⚡', url='https://t.me/HGBOTZ_support')
@@ -214,7 +216,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "close_data":
         await query.message.delete()
     elif query.data == "about":
-        buttons = [[
+        buttons1 = [[
             InlineKeyboardButton('🔙 back', callback_data='start'),
             InlineKeyboardButton('🔒 Cʟᴏsᴇ', callback_data='close_data')
         ]]
@@ -223,7 +225,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             query.message.id, 
             InputMediaPhoto(photo="https://envs.sh/A50.jpg")
         )
-        reply_markup = InlineKeyboardMarkup(buttons)
+        reply_markup = InlineKeyboardMarkup(buttons1)
         me2 = (await client.get_me()).mention
         await query.message.edit_text(
             text=script.ABOUT_TXT.format(me2),
