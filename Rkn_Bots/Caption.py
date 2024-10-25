@@ -215,12 +215,12 @@ async def auto_edit_caption(bot, message):
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "close_data":
         await query.message.delete()
-  elif query.data == "about":
-    try:
+    elif query.data == "about":
         buttons1 = [[
             InlineKeyboardButton('🔙 back', callback_data='start'),
             InlineKeyboardButton('🔒 Cʟᴏsᴇ', callback_data='close_data')
         ]]
+     try:
         await bot.edit_message_media(
             query.message.chat.id, 
             query.message.id, 
@@ -232,7 +232,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         ) 
-    except Exception as e:
+     except Exception as e:
             print(e)  # print the error message
             
                 
