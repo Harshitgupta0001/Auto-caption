@@ -213,6 +213,7 @@ async def auto_edit_caption(bot, message):
 
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
+    client = bot
     if query.data == "close_data":
         await query.message.delete()
     elif query.data == "about":
@@ -226,9 +227,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InputMediaPhoto(photo="https://envs.sh/A50.jpg")
         )
         reply_markup = InlineKeyboardMarkup(buttons1)
-        me2 = (await client.get_me()).mention
         await query.message.edit_text(
-            text=script.ABOUT_TXT.format(me2),
+            text='hii',
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
