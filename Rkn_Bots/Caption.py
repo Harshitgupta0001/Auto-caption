@@ -212,7 +212,7 @@ async def auto_edit_caption(bot, message):
     return
 
 @Client.on_callback_query()
-async def cb_handler(bot: Bot, query: CallbackQuery):
+async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "close_data":
         await query.message.delete()
     elif query.data == "about":
