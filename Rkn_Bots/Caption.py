@@ -11,6 +11,7 @@ from .database import total_user, getid, delete, addCap, updateCap, insert, chnl
 from pyrogram.errors import *
 from utils import react_msg 
 from pyrogram.types import *
+from Script import script
 
 buttons = [[
             InlineKeyboardButton('Main Channel', url='https://t.me/hgbotz'),
@@ -207,3 +208,25 @@ async def auto_edit_caption(bot, message):
                     await asyncio.sleep(e.x)
                     continue
     return
+
+@Client.on_callback_query()
+async def cb_handler(client: Client, query: CallbackQuery):
+    if query.data == "close_data":
+        await query.message.delete()
+    elif query.data == "about":
+        buttons = [[
+            InlineKeyboardButton('🔙 back', callback_data='start'),
+            InlineKeyboardButton('🔒 Cʟᴏsᴇ', callback_data='close_data')
+        ]]
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto(photo="https://envs.sh/A50.jpg")
+        )
+        reply_markup = InlineKeyboardMarkup(buttons)
+        me2 = (await client.get_me()).mention
+        await query.message.edit_text(
+            text=script.ABOUT_TXT.format(me2),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
