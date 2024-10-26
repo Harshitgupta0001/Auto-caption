@@ -2,7 +2,7 @@ from pyrogram import Client, filters, errors, types
 from pyrogram.types import *
 @Client.on_callback_query()
 async def cb_handler(bot, query: CallbackQuery):
-    elif query.data == "about":
+     if query.data == "about":
         buttons1 = [[
             InlineKeyboardButton('🔙 back', callback_data='start'),
             InlineKeyboardButton('🔒 Cʟᴏsᴇ', callback_data='close_data')
