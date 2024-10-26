@@ -15,6 +15,8 @@ from pyrogram.types import *
 buttons = [[
             InlineKeyboardButton('Main Channel', url='https://t.me/hgbotz'),
             InlineKeyboardButton('Help Group', url='https://t.me/HGBOTZ_support')
+         ],[
+            InlineKeyboardButton('⍟ Aʙᴏᴜᴛ', callback_data='about')     
           ]]
 
 query_button = [[
