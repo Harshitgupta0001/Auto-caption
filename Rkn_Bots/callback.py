@@ -1,6 +1,4 @@
-
-
-
+from pyrogram.types import *
 @Client.on_callback_query()
 async def cb_handler(bot, query: CallbackQuery):
     if query.data == "close_data":
